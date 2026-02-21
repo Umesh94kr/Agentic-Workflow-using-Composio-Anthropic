@@ -15,7 +15,7 @@ def connect_tool(tool_name, user_id: str = "user_123"):
         if toolkit.name.lower() == tool_name and toolkit.connection.is_active:
             print("Gmail is already connected!")
             return session
-
+        
     # Trigger OAuth
     connection_request = session.authorize(tool_name)
     print(f"\nOpen this link in your browser to connect Gmail:\n\n  {connection_request.redirect_url}\n")

@@ -4,7 +4,7 @@ from authorising_tools import connect_tool
 
 if __name__ == "__main__":
     user_id = input("Enter your user_id : ")
-    tool = input("Enter tool you want to use 'gmail', 'notion' (check cpmposio for this) : ")
+    tool = input("Enter tool you want to use 'gmail', 'notion' (check composio for this) : ")
     ## check whether tool is authorised if not click on link to authorise the tool 
     connect_tool(tool, user_id)
 

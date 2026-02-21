@@ -25,7 +25,7 @@ class RewardState(TypedDict):
     reasoning: str
 
 # structured output validation from LLM 
-class StructuredLlmOutput(BaseModel):
+class StructuredOutput(BaseModel):
     "What LLM should generate when asked to evaluate a task performed by agent."
     success: Annotated[str, Field(description="If task is successfully completed by agent then return 'Yes' else 'No'")]
     reasoning: Annotated[List[str], Field(description="Give the reasoning for whether agent completed the task or not.")]
@@ -42,8 +42,7 @@ def llm_usage(state: RewardState) -> RewardState:
         input_variables=['task', 'tool_calls_and_resps']
     )
 
-    llm_outline = llm.with_structured_output(StructuredLlmOutput)
-
+    llm_outline = llm.with_structured_output(StructuredOutput)
     chain = prompt | llm_outline 
     
     response = chain.invoke({'task' : state['task'], 'tool_calls_and_resps' : state['tool_calls_and_resps']})
@@ -56,7 +55,7 @@ def make_graph():
     graph = StateGraph(RewardState)
 
     graph.add_node('llm_usage', llm_usage)
-
+    
     # add edges 
     graph.add_edge(START, 'llm_usage')
     graph.add_edge('llm_usage', END)
