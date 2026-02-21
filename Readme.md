@@ -29,9 +29,10 @@ pip install -r requirements.txt
 
 Create a .env file in the root directory and add:
 
+```
 COMPOSIO_API_KEY=YOUR_COMPOSIO_API_KEY
 ANTHROPIC_API_KEY=YOUR_ANTHROPIC_API_KEY
-
+```
 🔑 How to Get API Keys
 
 Composio API Key
@@ -46,13 +47,10 @@ Generate your API key from the API settings section.
 
 🛠 Tool Configuration (Composio)
 
-Visit the Composio dashboard.
-
-Explore available toolkits.
-
-Enable and configure tools you want to use (e.g., gmail, notion, etc.).
-
-Ensure proper authentication is completed for each tool.
+ - Visit the Composio dashboard.
+ - Explore available toolkits.
+ - Enable and configure tools you want to use (e.g., gmail, notion, etc.).
+ - Ensure proper authentication is completed for each tool.
 
 And also I had used Ollama to run reward agent (for evaluation)
 you can change LLM in reward.py otherwise first take a pull of `llama3.2`
@@ -60,25 +58,23 @@ you can change LLM in reward.py otherwise first take a pull of `llama3.2`
 Check my second readme in this repo : Setup_for_local_ollama3.2.md
 
 ▶️ Run the Application
-`python main.py`
+```
+bash
+python main.py
+```
 
 🧠 What Happens Next?
 
 - The program prompts for a user_id.
-
 - You choose the tool you want to connect.
-
 - If the tool is not authenticated:
 
-    A secure authentication link will be generated.
-
-    Complete authentication in your browser.
+    > A secure authentication link will be generated.
+    > Complete authentication in your browser.
 
 - Once authenticated, the agent executes tasks using:
-
-    Composio for tool actions
-
-    Anthropic LLM for reasoning & decision-making
+    > Composio for tool actions
+    > Anthropic LLM for reasoning & decision-making
 
 Follow the prompts and interact with your agent.
 
